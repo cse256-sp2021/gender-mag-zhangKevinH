@@ -1,5 +1,41 @@
 // ---- Define your dialogs  and panels here ----
 
+let newPermiss = define_new_effective_permissions('test', true, null);
+
+
+$('#sidepanel').append(newPermiss);
+
+
+let newSelect = define_new_user_select_field('test1', 'hello', on_user_change = function(selected_user){
+    $('#test').attr('username', selected_user)
+});
+
+$('#sidepanel').append(newSelect);
+
+let newDialog = define_new_dialog('test3', title='hello', options = {});
+
+
+$('#test').attr('filepath', '/C');
+
+$(".fa-info-circle").click(function(){
+    newDialog.dialog('open')
+    let fp=$('#test').attr('filepath');
+    let usr=$('#test').attr('username');
+    let permisType=$(this).attr('permission_name');
+    console.log(fp);
+    console.log(usr);
+    console.log(permisType);
+
+    let fileObj = path_to_file[fp];
+    let usrObj = all_users[usr];
+
+    let usrAction=allow_user_action(fileObj, usrObj, false);
+    let explanation = get_explanation_text(usrAction);
+    $('#test3').append(explanation);
+});
+
+
+
 
 
 // ---- Display file structure ----
