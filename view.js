@@ -1,6 +1,7 @@
 // ---- Define your dialogs  and panels here ----
 
-$('#sidepanel').append("HINT: If user permissions are greyed-out (you cannot edit the checkboxes), try editing the user permissions of the folder containing the aformentioned file");
+$('#sidepanel').html("HINTS: </br> If user permissions are greyed-out (you cannot edit the checkboxes), try editing the user permissions of the folder containing the aformentioned file </br> If you cannot remove the user in the selected file, try removing the user from the folder containing the file.");
+
 
 // let newPermiss = define_new_effective_permissions('test', true, null);
 
