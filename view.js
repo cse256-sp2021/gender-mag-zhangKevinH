@@ -1,38 +1,43 @@
 // ---- Define your dialogs  and panels here ----
 
-let newPermiss = define_new_effective_permissions('test', true, null);
+$('#sidepanel').append("HINT: If user permissions are greyed-out (you cannot edit the checkboxes), try editing the user permissions of the folder containing the aformentioned file");
+
+// let newPermiss = define_new_effective_permissions('test', true, null);
+
+// $('#sidepanel').append(newPermiss);
 
 
-$('#sidepanel').append(newPermiss);
+// let newSelect = define_new_user_select_field('test1', 'Select User', on_user_change = function(selected_user){
+//     $('#test').attr('username', selected_user)
+// });
 
 
-let newSelect = define_new_user_select_field('test1', 'hello', on_user_change = function(selected_user){
-    $('#test').attr('username', selected_user)
-});
 
-$('#sidepanel').append(newSelect);
+// $('#sidepanel').append(newSelect);
 
-let newDialog = define_new_dialog('test3', title='hello', options = {});
+// let newDialog = define_new_dialog('test3', title='hello', options = {});
 
 
-$('#test').attr('filepath', '/C');
+// $('#test').attr('filepath', '/C');
 
-$(".fa-info-circle").click(function(){
-    newDialog.dialog('open')
-    let fp=$('#test').attr('filepath');
-    let usr=$('#test').attr('username');
-    let permisType=$(this).attr('permission_name');
-    console.log(fp);
-    console.log(usr);
-    console.log(permisType);
+// $(".fa-info-circle").click(function(){
+//     newDialog.dialog('open')
+//     let fp=$('#test').attr('filepath');
+//     let usr=$('#test').attr('username');
+//     let permisType=$(this).attr('permission_name');
+//     console.log(fp);
+//     console.log(usr);
+//     console.log(permisType);
 
-    let fileObj = path_to_file[fp];
-    let usrObj = all_users[usr];
+//     let fileObj = path_to_file[fp];
+//     let usrObj = all_users[usr];
 
-    let usrAction=allow_user_action(fileObj, usrObj, false);
-    let explanation = get_explanation_text(usrAction);
-    $('#test3').append(explanation);
-});
+//     let usrAction=allow_user_action(fileObj, usrObj, false);
+//     let explanation = get_explanation_text(usrAction);
+//     $('#test3').append(explanation);
+// });
+
+
 
 
 
@@ -104,6 +109,15 @@ $('.permbutton').click( function( e ) {
     // Emit a click for logging purposes:
     emitter.dispatchEvent(new CustomEvent('userEvent', { detail: new ClickEntry(ActionEnum.CLICK, (e.clientX + window.pageXOffset), (e.clientY + window.pageYOffset), e.target.id,new Date().getTime()) }))
 });
+
+$('.permbutton').append('Edit File Permissions');
+$('#perm_add_user_button').empty();
+$('#perm_add_user_button').append('Add a User');
+$('#perm_remove_user').empty();
+$('#perm_remove_user').append('Remove Selected User');
+
+$('#permissions_user_title').empty();
+$('#permissions_user_title').append("Select a User Below:");
 
 
 // ---- Assign unique ids to everything that doesn't have an ID ----
